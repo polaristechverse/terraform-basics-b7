@@ -1,0 +1,11 @@
+variable "vpc_cidr" {}
+variable "vpc_name" {}
+variable "subnet_1_cidr" {}
+variable "az1" {}
+variable "az2" {}
+variable "az3" {}
+variable "subnet_1_name" {}
+variable "subnet_2_name" {}
+variable "subnet_2_cidr" {}
+variable "subnet_3_cidr" {}
+variable "subnet_3_name" {}
