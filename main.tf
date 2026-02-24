@@ -1,7 +1,14 @@
 provider "aws" {
   region = "us-east-1"
 }
-
+terraform {
+  backend "s3" {
+    bucket         = "polaris-statefile"
+    key            = "polarisbasics.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+  }
+}
 resource "aws_vpc" "demovpc-1" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
