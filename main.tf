@@ -47,10 +47,19 @@ resource "aws_subnet" "devdemosubnet-3" {
     "Name" = var.subnet_3_name
   }
 }
-
+resource "aws_internet_gateway" "demoigw" {
+  vpc_id = aws_vpc.demovpc-1.id
+  tags = {
+    "Name" = "Dev-IGW"
+  }
+}
 resource "aws_route_table" "demoroute" {
   vpc_id = aws_vpc.demovpc-1.id
   tags = {
     "Name" = var.route_table_name
+  }
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.demoigw.id
   }
 }
