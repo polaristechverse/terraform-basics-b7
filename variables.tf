@@ -9,3 +9,4 @@ variable "subnet_2_name" {}
 variable "subnet_2_cidr" {}
 variable "subnet_3_cidr" {}
 variable "subnet_3_name" {}
+variable "route_table_name" {}

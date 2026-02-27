@@ -3,10 +3,11 @@ provider "aws" {
 }
 terraform {
   backend "s3" {
-    bucket         = "polaris-statefile"
-    key            = "polarisbasics.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
+    bucket       = "polaris-statefile"
+    key          = "polarisbasics.tfstate"
+    region       = "us-east-1"
+    encrypt      = true
+    use_lockfile = true
   }
 }
 resource "aws_vpc" "demovpc-1" {
@@ -47,3 +48,9 @@ resource "aws_subnet" "devdemosubnet-3" {
   }
 }
 
+resource "aws_route_table" "demoroute" {
+  vpc_id = aws_vpc.demovpc-1.id
+  tags = {
+    "Name" = var.route_table_name
+  }
+}
